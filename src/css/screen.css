@@ -1,0 +1,12 @@
+* { margin: 0; padding: 0; -webkit-text-size-adjust: none; color: red; }
+
+body { font-family: Arial,sans-serif; font-weight: normal; font-size: 12px; line-height: 1.4; color: #bababa; background: #FFF; background: url('../img/icons-s95b22fd45d.png') 0 -164px no-repeat; width: 72px; height: 72px; }
+
+a img, fieldset { border: none; }
+
+a:hover { text-decoration: none; }
+
+/* default layout */
+.l { width: 100%; display: inline-block; }
+.l .l-col1 { float: left; width: 20%; }
+.l .l-col2 { float: right; width: 70%; }
