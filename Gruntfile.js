@@ -28,7 +28,7 @@ grunt.initConfig({
 	  main: {
 		files: [
 			 {expand: true, cwd: 'src/img/', src: ['**'], dest: 'production/img'}, // makes all src relative to cwd
-			 {expand: true, cwd: 'src/sass', src: ['**'], dest: 'production/sass'},
+			 //{expand: true, cwd: 'src/sass', src: ['**'], dest: 'production/sass'}, //im not sure we need that
 			 {expand: true, cwd: 'src/css', src: ['**'], dest: 'production/css'},
 			 {expand: true, cwd: 'src/js', src: ['**'], dest: 'production/js'}
 		]

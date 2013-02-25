@@ -1,6 +1,6 @@
-* { margin: 0; padding: 0; -webkit-text-size-adjust: none; color: red; }
+* { margin: 0; padding: 0; -webkit-text-size-adjust: none; }
 
-body { font-family: Arial,sans-serif; font-weight: normal; font-size: 12px; line-height: 1.4; color: #bababa; background: #FFF; background: url('../img/icons-s95b22fd45d.png') 0 -164px no-repeat; width: 72px; height: 72px; }
+body { font-family: Arial,sans-serif; font-weight: normal; font-size: 12px; line-height: 1.4; }
 
 a img, fieldset { border: none; }
 

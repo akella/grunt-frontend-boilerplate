@@ -9,44 +9,42 @@
 // }
 // =======animation example
 // @include keyframes(rotate) {
-//    from { 
-//       @include rotate(0);  
+//    from {
+//       @include rotate(0);
 //    }
 //    to {
 //       @include rotate(360);
 //    }
 // }
-// =========animation usage
+// =======animation usage
 // body:hover{
 // 	@include animation(rotate 200s linear infinite);
 // }
-// ========gradient example
+// =======gradient example
 // body{
 // @include background-image(linear-gradient(#232323, #5c5c5c));
 // }
-// =========making bw-images
+// =======making bw-images
 // img{@extend %gray;}
+// BTW these comments will not render into css
 
 
 
-*{margin:0;padding:0;-webkit-text-size-adjust: none;color:red; }
+*{margin:0;padding:0;-webkit-text-size-adjust: none; }
 body{
 	font: {
-		family: Arial,sans-serif; 
+		family: Arial,sans-serif;
 		weight: normal;
 		size: 12px;
 	}
 	line-height:1.4;
-	color: #bababa;
-	background: #FFF;
-	@include sized-sprite($icons, badge_hit);
 }
 // resets
 a img,fieldset{
 	border:none;
 	}
 a{
-	
+	color:#00919e;
 	&:hover{
 		text-decoration:none;
 	}
@@ -54,7 +52,7 @@ a{
 // common styles, these could be attached to any block with "@extend %wyswyg;"
 %wyswyg{
 	p{
-		margin-bottom: 20em;
+		margin-bottom: 1em;
 	}
 	ul,ol{
 		margin: 1em 2em;

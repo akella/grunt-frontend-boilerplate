@@ -1,4 +1,6 @@
-@import "lib/base";
+// this one just agregates all the libs
+@import "compass/css3";
+@import "lib/mixins";
 @import "lib/animations";
 @import "lib/keyframes";
 
