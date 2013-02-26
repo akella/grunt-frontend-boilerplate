@@ -27,7 +27,7 @@ grunt.initConfig({
 	copy: {
 	  main: {
 		files: [
-			 {expand: true, cwd: 'src/img/', src: ['**'], dest: 'production/img'}, // makes all src relative to cwd
+			 {expand: true, cwd: 'src/img/', src: ['**'], dest: 'production/img'}, // copy all the pics
 			 //{expand: true, cwd: 'src/sass', src: ['**'], dest: 'production/sass'}, //im not sure we need that
 			 {expand: true, cwd: 'src/css', src: ['**'], dest: 'production/css'},
 			 {expand: true, cwd: 'src/js', src: ['**'], dest: 'production/js'}
@@ -62,16 +62,28 @@ grunt.initConfig({
 			dest: 'production/js/app.js'
 		}
 	},
-	'min': {
+	min: {
 		'dist': {
 			'src': ['src/js/jquery.js','src/js/jquery.cycle.all.js','src/js/jquery.scrollTo.js','src/js/common.js'],
 			'dest': 'production/js/app.js'
 		}
 	},
+	imagemin: {
+		dist: {
+			options: {
+				optimizationLevel: 3
+			},
+			files: {
+				'production/img/*.png': 'src/img/*.png'
+				//'production/img/*.jpg': 'src/img/vk.jpg'
+			}
+		}
+	},
 	watch: {
 		files: ['src/sass/*.scss', 'src/*html', 'src/js/*.js'],
-		tasks: ['compass', 'copy', 'includereplace', 'concat','csso', 'clean']
+		tasks: ['compass', 'copy', 'includereplace', 'concat', 'csso', 'clean']
 	},
+
 	clean: ["production/_*.html", "production/css/lib"]
 });
 		grunt.loadNpmTasks('grunt-contrib-compass');
@@ -83,6 +95,7 @@ grunt.initConfig({
 		grunt.loadNpmTasks('grunt-contrib-concat');
 		grunt.loadNpmTasks('grunt-yui-compressor');
 		grunt.loadNpmTasks('grunt-csso');
+		grunt.loadNpmTasks('grunt-contrib-imagemin');
 
 
 		grunt.registerTask('default', 'watch');

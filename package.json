@@ -1,5 +1,8 @@
 {
-  "name": "Akella's Frontend Boilerplate",
+  "name": "FrontendBoilerplateByAkella",
   "version": "0.0.1",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "grunt-contrib-imagemin": "~0.1.2"
+  }
 }
