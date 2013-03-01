@@ -25,14 +25,14 @@ grunt.initConfig({
 		}
 	},
 	copy: {
-	  main: {
-		files: [
-			 {expand: true, cwd: 'src/img/', src: ['**'], dest: 'production/img'}, // copy all the pics
-			 //{expand: true, cwd: 'src/sass', src: ['**'], dest: 'production/sass'}, //im not sure we need that
-			 {expand: true, cwd: 'src/css', src: ['**'], dest: 'production/css'},
-			 {expand: true, cwd: 'src/js', src: ['**'], dest: 'production/js'}
-		]
-	  }
+		main: {
+			files: [
+				{expand: true, cwd: 'src/img/', src: ['**'], dest: 'production/img'}, // copy all the pics
+				//{expand: true, cwd: 'src/sass', src: ['**'], dest: 'production/sass'}, //im not sure we need that
+				{expand: true, cwd: 'src/css', src: ['**'], dest: 'production/css'},
+				{expand: true, cwd: 'src/js', src: ['**'], dest: 'production/js'}
+			]
+		}
 	},
 	includereplace: {
 		dist: {
@@ -54,16 +54,18 @@ grunt.initConfig({
 		}
 	},
 	concat: {
-		options: {
-			separator: ';'
-		},
 		dist: {
-			'src': ['src/js/jquery.js','src/js/jquery.cycle.all.js','src/js/jquery.scrollTo.js','src/js/common.js'],
+			'src': [
+				'src/js/jquery.js',
+				'src/js/jquery.cycle.all.js',
+				'src/js/jquery.scrollTo.js',
+				'src/js/common.js'
+			],
 			dest: 'production/js/app.js'
 		}
 	},
 	min: {
-		'dist': {
+		dist: {
 			'src': ['src/js/jquery.js','src/js/jquery.cycle.all.js','src/js/jquery.scrollTo.js','src/js/common.js'],
 			'dest': 'production/js/app.js'
 		}
@@ -75,8 +77,13 @@ grunt.initConfig({
 			},
 			files: {
 				'production/img/*.png': 'src/img/*.png'
-				//'production/img/*.jpg': 'src/img/vk.jpg'
+				//'production/img/*.jpg': 'src/img/*.jpg'
 			}
+		}
+	},
+	imgo: {
+		icons: {
+			src: 'production/img/*.png'
 		}
 	},
 	watch: {
@@ -86,6 +93,7 @@ grunt.initConfig({
 
 	clean: ["production/_*.html", "production/css/lib"]
 });
+		//require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 		grunt.loadNpmTasks('grunt-contrib-compass');
 		grunt.loadNpmTasks('grunt-contrib-cssmin');
 		grunt.loadNpmTasks('grunt-include-replace');
@@ -96,8 +104,10 @@ grunt.initConfig({
 		grunt.loadNpmTasks('grunt-yui-compressor');
 		grunt.loadNpmTasks('grunt-csso');
 		grunt.loadNpmTasks('grunt-contrib-imagemin');
+		grunt.loadNpmTasks('grunt-imgo');
 
 
 		grunt.registerTask('default', 'watch');
+
 
 };
