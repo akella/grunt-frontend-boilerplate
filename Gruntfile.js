@@ -81,33 +81,34 @@ grunt.initConfig({
 			}
 		}
 	},
-	imgo: {
-		icons: {
-			src: 'production/img/*.png'
-		}
-	},
+	//  doesnt work for now
+	// imgo: {
+	// 	icons: {
+	// 		src: 'production/img/*.png'
+	// 	}
+	// },
 	watch: {
 		files: ['src/sass/*.scss', 'src/*html', 'src/js/*.js'],
 		tasks: ['compass', 'copy', 'includereplace', 'concat', 'csso', 'clean']
 	},
 
-	clean: ["production/_*.html", "production/css/lib"]
+	clean: ["production/_*.html", "production/css/lib", "src/css"]
 });
-		//require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-		grunt.loadNpmTasks('grunt-contrib-compass');
-		grunt.loadNpmTasks('grunt-contrib-cssmin');
-		grunt.loadNpmTasks('grunt-include-replace');
-		grunt.loadNpmTasks('grunt-contrib-copy');
-		grunt.loadNpmTasks('grunt-contrib-watch');
-		grunt.loadNpmTasks('grunt-contrib-clean');
-		grunt.loadNpmTasks('grunt-contrib-concat');
-		grunt.loadNpmTasks('grunt-yui-compressor');
-		grunt.loadNpmTasks('grunt-csso');
-		grunt.loadNpmTasks('grunt-contrib-imagemin');
-		grunt.loadNpmTasks('grunt-imgo');
+	//require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+	grunt.loadNpmTasks('grunt-contrib-compass');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-include-replace');
+	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-yui-compressor');
+	grunt.loadNpmTasks('grunt-csso');
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
+	// grunt.loadNpmTasks('grunt-imgo');
 
 
-		grunt.registerTask('default', 'watch');
+	grunt.registerTask('default', 'watch');
 
 
 };
