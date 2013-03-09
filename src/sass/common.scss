@@ -9,24 +9,33 @@
 // }
 // =======animation example
 // @include keyframes(rotate) {
-//    from {
-//       @include rotate(0);
-//    }
-//    to {
-//       @include rotate(360);
-//    }
+// 	from {
+// 		@include rotate(0);
+// 	}
+// 	to {
+// 		@include rotate(360);
+// 	}
 // }
 // =======animation usage
 // body:hover{
 // 	@include animation(rotate 200s linear infinite);
 // }
+//=======animations easing, see easings.net for full list and examples, tnx @ai
+// 	transition: all 1.2s ceaser($ease-in);
+// or    @include transition(all 600ms ceaser($easeOutBack));  we can't use 0.6s for ceaser animations
 // =======gradient example
 // body{
-// @include background-image(linear-gradient(#232323, #5c5c5c));
+// 	@include background-image(linear-gradient(#232323, #5c5c5c));
 // }
 // =======making bw-images
 // img{@extend %gray;}
+//
+// ========= predefined media-queries: https://github.com/paranoida/sass-mediaqueries
+// @min-screen(320){ css goes here}
+// @max-screen(1000), @iphone5, @iphone4, @ipad-retina, @ipad, @hdpi - also available
+
 // BTW these comments will not render into css
+
 
 
 
@@ -44,7 +53,9 @@ a img,fieldset{
 	border:none;
 	}
 a{
+	color:#00919e;
 	&:hover{
+
 	}
 }
 // common styles, these could be attached to any block with "@extend %wyswyg;"

@@ -64,6 +64,24 @@ grunt.initConfig({
 			dest: 'production/js/app.js'
 		}
 	},
+	styleguide: {
+		styledocco: {
+			options: {
+				framework: {
+					name: 'styledocco'
+				},
+				template: {
+			                // src: 'path/to/templates',
+			                include: ['production/css/screen.css']
+			            },
+				name: 'MySite Style Guide'
+			},
+			
+			files: {
+				'production/docs': 'src/sass/*.scss'
+			}
+		},
+	},
 	min: {
 		dist: {
 			'src': ['src/js/jquery.js','src/js/jquery.cycle.all.js','src/js/jquery.scrollTo.js','src/js/common.js'],
@@ -92,7 +110,7 @@ grunt.initConfig({
 		tasks: ['compass', 'copy', 'includereplace', 'concat', 'csso', 'clean']
 	},
 
-	clean: ["production/_*.html", "production/css/lib", "src/css"]
+	clean: ["production/_*.html", "production/css/lib", "src/css",'production/docs']
 });
 	//require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 	grunt.loadNpmTasks('grunt-contrib-compass');
@@ -105,6 +123,7 @@ grunt.initConfig({
 	grunt.loadNpmTasks('grunt-yui-compressor');
 	grunt.loadNpmTasks('grunt-csso');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
+	grunt.loadNpmTasks('grunt-styleguide');
 	// grunt.loadNpmTasks('grunt-imgo');
 
 
