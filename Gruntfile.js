@@ -1,10 +1,22 @@
+'use strict';
+var path = require( 'path' );
+var lrSnippet = require( 'grunt-contrib-livereload/lib/utils' ).livereloadSnippet;
+var folderMount = function folderMount( connect, point ) {
+	return connect.static( path.resolve( point ) );
+};
+
+
 module.exports = function(grunt) {
 
 grunt.initConfig({
-	cssmin: {
-		compress: {
-			files: {
-				"production/css/screen.css": ["production/css/screen.css"]
+	connect: {
+		livereload: {
+			options: {
+				port: 9001,
+				base: 'production',
+				middleware: function( connect, options ) {
+					return [lrSnippet, folderMount( connect, options.base )]
+				}
 			}
 		}
 	},
@@ -71,12 +83,11 @@ grunt.initConfig({
 					name: 'styledocco'
 				},
 				template: {
-			                // src: 'path/to/templates',
-			                include: ['production/css/screen.css']
-			            },
+							// src: 'path/to/templates',
+							include: ['production/css/screen.css']
+						},
 				name: 'MySite Style Guide'
 			},
-			
 			files: {
 				'production/docs': 'src/sass/*.scss'
 			}
@@ -94,8 +105,8 @@ grunt.initConfig({
 				optimizationLevel: 3
 			},
 			files: {
-				'production/img/*.png': 'src/img/*.png'
-				//'production/img/*.jpg': 'src/img/*.jpg'
+				'production/img/*.png': 'src/img/*.png',
+				'production/img/*.jpg': 'src/img/*.jpg'
 			}
 		}
 	},
@@ -105,9 +116,19 @@ grunt.initConfig({
 	// 		src: 'production/img/*.png'
 	// 	}
 	// },
-	watch: {
-		files: ['src/sass/*.scss', 'src/*html', 'src/js/*.js'],
-		tasks: ['compass', 'copy', 'includereplace', 'concat', 'csso', 'clean']
+	// watch: {
+	// 	files: ['src/sass/*.scss', 'src/*html', 'src/js/*.js'],
+	// 	tasks: ['compass', 'copy', 'includereplace', 'concat', 'csso', 'clean']
+	// },
+	regarde: {
+		compile: {
+			files: ['src/sass/*.scss', 'src/*html', 'src/js/*.js'],
+			tasks: ['compass', 'copy', 'includereplace', 'concat', 'csso', 'clean','livereload']
+		},
+		reload: {
+			files: ['production/*.*', 'production/**.*'],
+			tasks: [ 'livereload' ]
+		}
 	},
 
 	clean: ["production/_*.html", "production/css/lib", "src/css",'production/docs']
@@ -118,16 +139,22 @@ grunt.initConfig({
 	grunt.loadNpmTasks('grunt-include-replace');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks( 'grunt-regarde' );
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-yui-compressor');
 	grunt.loadNpmTasks('grunt-csso');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-styleguide');
+	grunt.loadNpmTasks( 'grunt-contrib-connect' );
+	grunt.loadNpmTasks( 'grunt-contrib-livereload' );
 	// grunt.loadNpmTasks('grunt-imgo');
 
 
-	grunt.registerTask('default', 'watch');
+	//grunt.registerTask('default', 'watch');
+	grunt.registerTask( 'default', ['livereload-start', 'connect', 'regarde' ]);
 
+	//@todo make regarde:dev compile - faster than production
+	//grunt.registerTask( 'default', ['livereload-start', 'connect', 'regarde' ]);
 
 };
