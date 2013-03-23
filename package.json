@@ -1,13 +1,11 @@
 {
   "name": "FrontendBoilerplateByAkella",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "devDependencies": {
     "grunt-contrib-imagemin": "~0.1.2",
     "grunt-imgo": "~0.1.0",
-    "grunt-contrib-watch": "~0.3.1",
     "grunt-contrib-compass": "~0.1.3",
-    "grunt-contrib-cssmin": "~0.4.1",
     "grunt-include-replace": "~0.1.0",
     "grunt-contrib-copy": "~0.4.0",
     "grunt-contrib-clean": "~0.4.0",

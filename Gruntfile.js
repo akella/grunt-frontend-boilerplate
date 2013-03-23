@@ -42,7 +42,7 @@ grunt.initConfig({
 				{expand: true, cwd: 'src/img/', src: ['**'], dest: 'production/img'}, // copy all the pics
 				//{expand: true, cwd: 'src/sass', src: ['**'], dest: 'production/sass'}, //im not sure we need that
 				{expand: true, cwd: 'src/css', src: ['**'], dest: 'production/css'},
-				{expand: true, cwd: 'src/js', src: ['**'], dest: 'production/js'}
+				//{expand: true, cwd: 'src/js', src: ['**'], dest: 'production/js'}
 			]
 		}
 	},
@@ -68,10 +68,7 @@ grunt.initConfig({
 	concat: {
 		dist: {
 			'src': [
-				'src/js/jquery.js',
-				'src/js/jquery.cycle.all.js',
-				'src/js/jquery.scrollTo.js',
-				'src/js/common.js'
+				'src/js/*.js'
 			],
 			dest: 'production/js/app.js'
 		}
@@ -83,9 +80,9 @@ grunt.initConfig({
 					name: 'styledocco'
 				},
 				template: {
-							// src: 'path/to/templates',
-							include: ['production/css/screen.css']
-						},
+					// src: 'path/to/templates',
+					include: ['production/css/screen.css','production/js/app.js']
+				},
 				name: 'MySite Style Guide'
 			},
 			files: {
@@ -95,8 +92,8 @@ grunt.initConfig({
 	},
 	min: {
 		dist: {
-			'src': ['src/js/jquery.js','src/js/jquery.cycle.all.js','src/js/jquery.scrollTo.js','src/js/common.js'],
-			'dest': 'production/js/app.js'
+			'src': ['production/js/app.js'],
+			'dest': 'production/js/app.min.js'
 		}
 	},
 	imagemin: {
@@ -106,7 +103,7 @@ grunt.initConfig({
 			},
 			files: {
 				'production/img/*.png': 'src/img/*.png',
-				'production/img/*.jpg': 'src/img/*.jpg'
+				//'production/img/*.jpg': 'src/img/*.jpg'
 			}
 		}
 	},
@@ -120,6 +117,7 @@ grunt.initConfig({
 	// 	files: ['src/sass/*.scss', 'src/*html', 'src/js/*.js'],
 	// 	tasks: ['compass', 'copy', 'includereplace', 'concat', 'csso', 'clean']
 	// },
+	// imagemin?
 	regarde: {
 		compile: {
 			files: ['src/sass/*.scss', 'src/*html', 'src/js/*.js'],
@@ -130,31 +128,31 @@ grunt.initConfig({
 			tasks: [ 'livereload' ]
 		}
 	},
-
-	clean: ["production/_*.html", "production/css/lib", "src/css",'production/docs']
+	clean: {
+		default: ["production/_*.html", "production/css/lib", "src/css",'production/docs'],
+		release: ["production/*",]
+	}
+	//clean: ["production/_*.html", "production/css/lib", "src/css",'production/docs']
 });
 	//require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 	grunt.loadNpmTasks('grunt-contrib-compass');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-yui-compressor');
 	grunt.loadNpmTasks('grunt-include-replace');
 	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks( 'grunt-regarde' );
+	grunt.loadNpmTasks('grunt-regarde');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-yui-compressor');
 	grunt.loadNpmTasks('grunt-csso');
-	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-styleguide');
-	grunt.loadNpmTasks( 'grunt-contrib-connect' );
-	grunt.loadNpmTasks( 'grunt-contrib-livereload' );
+	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-contrib-livereload');
+	grunt.loadNpmTasks('grunt-yui-compressor');
 	// grunt.loadNpmTasks('grunt-imgo');
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
 
 
-	//grunt.registerTask('default', 'watch');
 	grunt.registerTask( 'default', ['livereload-start', 'connect', 'regarde' ]);
+	grunt.registerTask( 'release', ['clean:release', 'compass', 'copy', 'includereplace', 'concat', 'csso', 'min', 'styleguide']);
 
-	//@todo make regarde:dev compile - faster than production
-	//grunt.registerTask( 'default', ['livereload-start', 'connect', 'regarde' ]);
 
 };
