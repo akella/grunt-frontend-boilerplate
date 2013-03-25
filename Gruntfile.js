@@ -121,7 +121,7 @@ grunt.initConfig({
 	regarde: {
 		compile: {
 			files: ['src/sass/*.scss', 'src/*html', 'src/js/*.js'],
-			tasks: ['compass', 'copy', 'includereplace', 'concat', 'csso', 'clean','livereload']
+			tasks: ['compass', 'copy', 'includereplace', 'concat', 'csso', 'clean:dev','livereload']
 		},
 		reload: {
 			files: ['production/*.*', 'production/**.*'],
@@ -129,7 +129,7 @@ grunt.initConfig({
 		}
 	},
 	clean: {
-		default: ["production/_*.html", "production/css/lib", "src/css",'production/docs'],
+		dev: ["production/_*.html", "production/css/lib", "src/css",'production/docs'],
 		release: ["production/*",]
 	}
 	//clean: ["production/_*.html", "production/css/lib", "src/css",'production/docs']
