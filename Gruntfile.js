@@ -120,7 +120,7 @@ grunt.initConfig({
 	// imagemin?
 	regarde: {
 		compile: {
-			files: ['src/sass/*.scss', 'src/*html', 'src/js/*.js'],
+			files: ['src/sass/*.scss', 'src/*.html', 'src/js/*.js'],
 			tasks: ['compass', 'copy', 'includereplace', 'concat', 'csso', 'clean:dev','livereload']
 		},
 		reload: {
