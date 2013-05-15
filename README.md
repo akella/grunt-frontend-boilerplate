@@ -11,7 +11,7 @@ How to run it
 =============
  - You need to have _npm_ installed now, as well as a _grunt_.
  - Download files, and go to this project folder in terminal. Type `npm install` (this will install some libraries for it to work). Folder `node_moduldes` might appear. Don't be afraid.
- - Run `grunt watch`, and it will watch for all the changes
+ - Run `grunt`, and it will watch for all the changes
 
 
 Drop me a line
