@@ -10,7 +10,7 @@ For generic frontend development. Mostly small to medium projects, and without s
 How to run it
 =============
  - You need to have _npm_ installed now, as well as a _grunt_.
- - Download files, and go to this project folder in terminal. Type `npm install` (this will install some libraries for it to work). Folder `node_moduldes` might appear. Don't be afraid.
+ - Download files, and go to this project folder in terminal. Type `npm install grunt --save-dev` (this will install some libraries for it to work). Folder `node_moduldes` might appear. Don't be afraid.
  - Run `grunt`, and it will watch for all the changes
 
 
