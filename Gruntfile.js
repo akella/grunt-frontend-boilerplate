@@ -151,7 +151,7 @@ grunt.initConfig({
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 
 
-	grunt.registerTask( 'default', ['livereload-start', 'connect', 'regarde' ]);
+	grunt.registerTask( 'default', ['livereload-start', 'connect', 'regarde']);
 	grunt.registerTask( 'release', ['clean:release', 'compass', 'copy', 'includereplace', 'concat', 'csso', 'min', 'styleguide']);
 
 
