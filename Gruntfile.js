@@ -99,7 +99,8 @@ grunt.initConfig({
 	imagemin: {
 		dist: {
 			options: {
-				optimizationLevel: 3
+				optimizationLevel: 3,
+				pngquant: false,
 			},
 			files: {
 				'production/img/*.png': 'src/img/*.png',
