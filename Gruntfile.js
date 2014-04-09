@@ -99,7 +99,8 @@ grunt.initConfig({
 	imagemin: {
 		dist: {
 			options: {
-				optimizationLevel: 3
+				optimizationLevel: 3,
+				pngquant: false,
 			},
 			files: {
 				'production/img/*.png': 'src/img/*.png',
@@ -146,7 +147,6 @@ grunt.initConfig({
 	grunt.loadNpmTasks('grunt-styleguide');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-livereload');
-	grunt.loadNpmTasks('grunt-yui-compressor');
 	// grunt.loadNpmTasks('grunt-imgo');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 
